@@ -2,11 +2,10 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import css from './ContactItem.module.css'
 
-const ContactItem = ({ onNewName}) => {
+const ContactItem = ({ contact }) => {
   return (
     <li className={css.contactItem}>
-      <p>Name: {onNewName}</p>
-      {/* <p>Phone: {contact.phone}</p> */}
+      <p>{contact.name}: {contact.number}</p>
     </li>
   );
 };

@@ -6,24 +6,27 @@ import ContactForm from './ContactForm';
 export class App extends Component {
   state = {
       contacts: [],
-      name: ''
+      name: '',
+      number: ''
     };
 
-handleNameChange = e => {
-console.log(e.currentTarget.value);
-this.setState({name: e.currentTarget.value});
-
+handleChange = e => {
+  const {name, value} = e.currentTarget;
+  
+this.setState({[name]: value});
 }
 
 handleAddContact = (e) => {
   e.preventDefault();
   const newContact = {
     id: nanoid(),
-    name: this.state.name.trim()
+    name: this.state.name.trim(),
+    number: this.state.number.trim(),
   };
   this.setState((prevState) => ({
     contacts: [...prevState.contacts, newContact],
-    name: ''
+    name: '',
+    number: '',
   }));
 };
 
@@ -33,7 +36,8 @@ handleAddContact = (e) => {
         <h1>Phonebook</h1>
       <ContactForm
       onName={this.state.name}
-      onChangeName={this.handleNameChange}
+      onNumber={this.state.number}
+      onChangeContact={this.handleChange}
       onSubmit={this.handleAddContact}
       />
     

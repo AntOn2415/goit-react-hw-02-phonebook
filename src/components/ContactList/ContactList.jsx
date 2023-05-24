@@ -7,7 +7,9 @@ const ContactList = ({ contacts }) => {
   return (
     <ul className={css.contactList}>
       {contacts.map(contact => (
-        <ContactItem key={contact.id} onNewName={contact.name} />
+        <ContactItem key={contact.id} 
+        contact={contact}
+          />
       ))}
     </ul>
   );
