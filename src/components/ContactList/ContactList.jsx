@@ -1,19 +1,25 @@
 import React from 'react';
-import ContactItem from './ContactItem';
+import ContactItem from './ContactItem/ContactItem';
 import PropTypes from 'prop-types';
 import css from './ContactList.module.css';
 
-const ContactList = ({ name, id }) => {
+const ContactList = ({ contacts }) => {
   return (
     <ul className={css.contactList}>
-<ContactItem/>
+      {contacts.map(contact => (
+        <ContactItem key={contact.id} onNewName={contact.name} />
+      ))}
     </ul>
   );
 };
 
 ContactList.propTypes = {
-  name: PropTypes.string,
-  id: PropTypes.number,
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default ContactList;
