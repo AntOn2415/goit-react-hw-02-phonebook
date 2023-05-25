@@ -7,15 +7,15 @@ class ContactForm extends Component {
   state = {
     name: '',
     number: '',
-  }
+  };
 
   handleChange = e => {
-    const {name, value} = e.currentTarget;
-    
-  this.setState({[name]: value});
-  }
-  
-  handleAddContact = (e) => {
+    const { name, value } = e.currentTarget;
+
+    this.setState({ [name]: value });
+  };
+
+  handleAddContact = e => {
     e.preventDefault();
     const newContact = {
       id: nanoid(),
@@ -23,11 +23,11 @@ class ContactForm extends Component {
       number: this.state.number.trim(),
     };
     this.props.onAddContact(newContact);
-    this.setState({ name: '', number: '' }); 
-    };
+    this.setState({ name: '', number: '' });
+  };
 
-  render(){
-    const {name, number} = this.state;
+  render() {
+    const { name, number } = this.state;
     return (
       <form className={css.contacts} onSubmit={this.handleAddContact}>
         <label>
@@ -54,13 +54,12 @@ class ContactForm extends Component {
             onChange={this.handleChange}
           />
         </label>
-  
+
         <button type="submit">Add contact</button>
       </form>
     );
-  };
   }
-
+}
 
 ContactForm.propTypes = {
   onName: PropTypes.string,

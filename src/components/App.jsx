@@ -4,7 +4,7 @@ import ContactForm from './ContactForm';
 import Filter from './Filter';
 export class App extends Component {
   state = {
-    contacts: [],
+    contacts:[],
     filter: '',
   }
 
@@ -19,6 +19,13 @@ getFilterContact = () => {
 }
 
 addContact = (newContact) => {
+  const {contacts} = this.state
+  const suchNameExists = contacts.some(contact => contact.name.toLowerCase() === newContact.name.toLowerCase())
+
+  if(suchNameExists){
+    alert(`${newContact.name} is already in contacts.`)
+    return
+  }
   this.setState((prevState) => ({
     contacts: [newContact, ...prevState.contacts],
   }));
