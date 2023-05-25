@@ -31,6 +31,12 @@ addContact = (newContact) => {
   }));
 };
 
+deleteContact = (contactId) => {
+this.setState(prevState =>({
+  contacts: prevState.contacts.filter(contact => contact.id !== contactId)
+}))
+}
+
   render() {
     const {filter} = this.state;
     const filterContact = this.getFilterContact();
@@ -47,7 +53,9 @@ addContact = (newContact) => {
       value={filter}
       onChangeFilter={this.changeFilter}
       />
-      <ContactList contacts={filterContact} 
+      <ContactList 
+      contacts={filterContact} 
+      onDeleteContact={this.deleteContact}
       />
     </div>
     )
