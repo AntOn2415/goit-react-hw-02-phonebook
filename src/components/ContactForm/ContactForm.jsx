@@ -33,10 +33,11 @@ class ContactForm extends Component {
   render() {
     const { name, number } = this.state;
     return (
-      <form className={css.contacts} onSubmit={this.handleAddContact}>
-        <label>
+      <form className={css.contactForm} onSubmit={this.handleAddContact}>
+        <label className={css.labelForm}>
           Name
           <input
+            className={css.inputForm}
             type="text"
             value={name}
             name="name"
@@ -46,9 +47,10 @@ class ContactForm extends Component {
             onChange={this.handleChange}
           />
         </label>
-        <label>
+        <label className={css.labelForm}>
           Number
           <input
+            className={css.inputForm}
             type="tel"
             value={number}
             name="number"
@@ -59,11 +61,12 @@ class ContactForm extends Component {
           />
         </label>
 
-        <button type="submit">Add contact</button>
+        <button className={css.btnForm} type="submit">
+          Add contact
+        </button>
       </form>
     );
   }
 }
-
 
 export default ContactForm;
