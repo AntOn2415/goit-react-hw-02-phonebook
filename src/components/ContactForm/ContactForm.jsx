@@ -9,6 +9,10 @@ class ContactForm extends Component {
     number: '',
   };
 
+  static propTypes = {
+    onAddContact: PropTypes.func.isRequired,
+  };
+
   handleChange = e => {
     const { name, value } = e.currentTarget;
 
@@ -61,9 +65,5 @@ class ContactForm extends Component {
   }
 }
 
-ContactForm.propTypes = {
-  onName: PropTypes.string,
-  onNumber: PropTypes.string,
-};
 
 export default ContactForm;
